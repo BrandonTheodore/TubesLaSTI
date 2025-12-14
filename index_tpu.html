@@ -1,0 +1,619 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>END.POINT</title>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-text">
+                        <h1>END.POINT</h1>
+                        <p class="subtitle">Jasa Layanan Pemesanan Makam</p>
+                    </div>
+                </div>
+
+                <div class="user-actions">
+                    <button class="icon-btn" id="bell-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2 12 2C11.17 2 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16ZM16 17H8V11C8 8.52 9.57 6.5 12 6.5C14.43 6.5 16 8.52 16 11V17Z"/></svg>
+                    </button>
+                    
+                    <div class="notification-dropdown" id="notification-popup">
+                        <div class="notification-item">Pesanan Pemakaman Diterima!</div>
+                    </div>
+
+                    <button class="icon-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sticky-header-wrapper">
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li class="nav-active"><a href="index.html">Pemesanan Makam</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div> 
+    <main class="main-content">
+        <div class="container">            
+            <section class="tabs-container">
+                <div class="tab-links">
+                        <a class="tab-link active" data-tab="introduction" id="introduction-tab-link">Pilih Lokasi</a>
+                        <a class="tab-separator">></a>
+                        <a class="tab-link disabled" data-tab="quote" id="quote-tab-link">Pilih TPU</a> 
+                        <a class="tab-separator">></a>
+                        <a class="tab-link disabled" data-tab="perencanaan" id="perencanaan-tab-link">Perencanaan</a> 
+                        <a class="tab-separator">></a>
+                        <a class="tab-link disabled" data-tab="data" id="data-tab-link">Data</a> 
+                    </div>
+                    <div class="tab-content">
+                        <div id="introduction" class="tab-pane active">
+                            <div class="dropdown-container">
+                                <label for="primary-select">1. Provinsi:</label>
+                                <select id="primary-select" onchange="updateSecondaryDropdown()">
+                                    <option value="">Pilih Provinsi</option>
+                                    <option value="DKI_Jakarta">DKI Jakarta</option>
+                                </select>
+                            </div>
+
+                            <div id="secondary-dropdown-container" class="dropdown-container">
+                                <label for="secondary-select">2. Pilih Kota:</label>
+                                <select id="secondary-select" onchange="updateCourseList()">
+                                    <option value="">Pilih Kota</option>
+                                </select>
+                            </div>
+                            
+                            <button id="continue-button" disabled>
+                                Lanjutkan 
+                            </button>
+                            <p id="error-message" style="color: red; margin-top: 10px; display: none;">Silakan pilih lokasi terlebih dahulu.</p>
+                        </div>
+                        
+                        <div id="quote" class="tab-pane">
+                            <div class="course-page-layout">
+                            <ul class="course-list" id="course-list">
+                                <li class="course-item" data-course-title="KaretBivak">
+                                    <div class="course-content">
+                                        <h3>TPU Karet Bivak</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Terletak di Kecamatan Tanah Abang, TPU Karet Bivak adalah salah satu TPU terbesar dan paling bersejarah di Jakarta. Sejak zaman Hindia Belanda, kawasan ini telah berfungsi sebagai area pemakaman. TPU ini terkenal sebagai tempat peristirahatan terakhir bagi banyak tokoh bangsa dan pahlawan nasional, dengan area khusus bernama Taman Makam Tokoh Bangsa. Luas totalnya mencapai sekitar 16,2 hektare.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item fully-occupied" data-course-title="Petamburan">
+                                    <div class="course-content">
+                                        <h3>TPU Petamburan</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Merupakan salah satu TPU bersejarah lainnya di Jakarta Pusat. TPU Petamburan melayani kebutuhan pemakaman bagi warga di sekitarnya, meskipun kapasitasnya kini sangat terbatas.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item fully-occupied" data-course-title="JerukPurut">
+                                    <div class="course-content">
+                                        <h3>TPU Jeruk Purut</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Terletak di Cilandak Timur, TPU Jeruk Purut sangat terkenal di masyarakat luas bukan hanya karena fungsinya, tetapi juga karena cerita legenda urban dan kisah-kisah mistis yang melekat padanya. Meski demikian, secara pengelolaan oleh pemerintah, TPU ini dirawat dengan baik.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="MentengPulo">
+                                    <div class="course-content">
+                                        <h3>TPU Menteng Pulo</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Kompleks pemakaman ini unik karena terdiri dari area pemakaman umum dan Ereveld Menteng Pulo, sebuah makam kehormatan (militer) bagi tentara Belanda dan sekutu yang gugur selama Perang Dunia II. TPU ini berada di wilayah Tebet.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="TanahKusir">
+                                    <div class="course-content">
+                                        <h3>TPU Tanah Kusir</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>TPU Tanah Kusir di Kebayoran Lama adalah salah satu TPU terbesar dan paling multireligius di Jakarta Selatan, mulai beroperasi penuh sejak tahun 1965. TPU ini mencerminkan keragaman Indonesia karena menerima jenazah dari berbagai agama (Islam, Kristen, Katolik, Hindu, Buddha) dalam satu kompleks. Kawasan ini juga berfungsi sebagai Ruang Terbuka Hijau (RTH) yang penting.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="TegalAlur">
+                                    <div class="course-content">
+                                        <h3>TPU Tegal Alur</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Berlokasi di Kalideres, TPU Tegal Alur merupakan satu-satunya TPU di Jakarta Barat yang masih memiliki areal yang cukup luas dan tersedia untuk pemakaman baru (blok makam baru). TPU ini juga menjadi salah satu lokasi utama pemakaman jenazah dengan protokol Covid-19 selama pandemi. TPU lainnya di Jakarta Barat dinyatakan penuh.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="PondokRanggon">
+                                    <div class="course-content">
+                                        <h3>TPU Pondok Ranggon</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Salah satu TPU terluas di Jakarta, dengan luas lebih dari 40 hektare. Selama pandemi Covid-19, TPU Pondok Ranggon menjadi sorotan karena menjadi lokasi utama pemakaman jenazah Covid-19 di Jakarta. Saat ini, lahan di blok muslim dan non-muslim sudah penuh dan hanya menerima pemakaman tumpang.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="UtanKayu">
+                                    <div class="course-content">
+                                        <h3>TPU Utan Kayu</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Terletak di Kecamatan Matraman, TPU Utan Kayu adalah salah satu TPU yang telah lama beroperasi di wilayah Jakarta Timur dan melayani kebutuhan pemakaman warga setempat.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="Semper">
+                                    <div class="course-content">
+                                        <h3>TPU Semper</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>Terletak di kawasan Cilincing, TPU Semper adalah salah satu TPU utama dan terbesar yang melayani wilayah Jakarta Utara. TPU ini sering disebut sebagai salah satu TPU percontohan di Jakarta. Pada masa pandemi Covid-19, TPU Semper juga disiapkan sebagai salah satu lokasi pemakaman jenazah dengan protokol kesehatan.</p>
+                                    </div>
+                                </li>
+
+                                <li class="course-item" data-course-title="Rorotan">
+                                    <div class="course-content">
+                                        <h3>TPU Rorotan</h3>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="select-tpu-btn">Pilih</button>
+                                    </div>
+                                    <div class="course-description hidden">
+                                        <p>TPU Rorotan di Cilincing ini juga dikenal sebagai salah satu TPU yang relatif lebih baru dikembangkan dibandingkan TPU lain yang sudah tua di pusat kota. TPU Rorotan juga sempat disiapkan untuk menampung jenazah Covid-19 ketika TPU lain seperti Pondok Ranggon dan Tegal Alur mulai penuh.</p>
+                                    </div>
+                                </li>
+                                
+                                <li>
+                                    <p id="tpu-error-message" style="color: red; margin-top: 10px; display: none;">Harap pilih salah satu TPU untuk melanjutkan.</p>
+                                    <button id="tpu-continue-button" disabled style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px;">
+                                        Lanjutkan
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+                        </div>
+                        
+                        <div id="perencanaan" class="tab-pane">
+                            <h2>Perencanaan Pemakaman</h2>
+                            
+                            <div class="dropdown-container">
+                                <label for="perencanaan-q1">1. Rencana Pemakaian:</label>
+                                <select id="perencanaan-q1" onchange="checkPerencanaanCompletion()">
+                                    <option value="">Pilih Rencana</option>
+                                    <option value="preneed">Pre-Need</option>
+                                    <option value="atneed">At-Need</option>
+                                </select>
+                            </div>
+
+                            <div class="dropdown-container" style="margin-top: 20px;">
+                                <label for="perencanaan-q2">2. Pilih Tipe Kavling</label>
+                                <select id="perencanaan-q2" onchange="checkPerencanaanCompletion()">
+                                    <option value="">Pilih Tipe</option>
+                                    <option value="single">Single</option>
+                                    <option value="double">Double</option>
+                                    <option value="family">Family</option>
+                                </select>
+                            </div>
+                            
+                            <button id="perencanaan-continue-button" disabled style="margin-top: 30px;">
+                                Lanjutkan 
+                            </button>
+                            <p id="perencanaan-error" style="color: red; margin-top: 10px; display: none;">Harap jawab semua pertanyaan di atas.</p>
+                        </div>
+                        
+                        <div id="data" class="tab-pane">
+                            <h2>Waktu dan Alamat</h2>
+                            <label for="waktu">Waktu Pemakaman:</label>
+                            <input type="date" id="waktu" name="pemakaman">
+                            <form id="alamat-form">
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="alamat" style="display: block; font-weight: bold;">Alamat Rumah Duka:</label>
+                                    <textarea id="alamat" rows="4" style="width: 50%; padding: 8px; box-sizing: border-box;"></textarea>
+                                </div>
+                            </form>
+                            <h2>Input Data Pemesan</h2>
+                            
+                            <form id="data-form">
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="data-nama" style="display: block; font-weight: bold;">Nama Lengkap:</label>
+                                    <input type="text" id="data-nama" required style="width: 50%; padding: 8px; box-sizing: border-box;">
+                                </div>
+                                
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="data-nik" style="display: block; font-weight: bold;">Nomor NIK:</label>
+                                    <input type="number" id="data-nik" required style="width: 50%; padding: 8px; box-sizing: border-box;">
+                                </div>
+                                
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="data-notelp" style="display: block; font-weight: bold;">Nomor Telepon:</label>
+                                    <input type="number" id="data-nik" required style="width: 50%; padding: 8px; box-sizing: border-box;">
+                                </div>
+
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="data-email" style="display: block; font-weight: bold;">Email:</label>
+                                    <input type="text" id="data-nik" required style="width: 50%; padding: 8px; box-sizing: border-box;">
+                                </div>
+
+                                <div class="form-group" style="margin-bottom: 15px;">
+                                    <label for="ktp">Silahkan Upload Foto KTP:</label>
+                                    <input type="file" id="myFile" name="filename" style="margin-top: 10px;">
+                                </div>
+                                
+                                <button id="submit-button" type="submit" disabled style="margin-top: 20px;">
+                                    Submit Data 
+                                </button>
+                            </form>
+                            <p id="data-error" style="color: red; margin-top: 10px; display: none;">Harap lengkapi semua kolom.</p>
+                        </div>
+
+                    </div>
+
+                    <div id="confirmation-modal" class="modal-overlay">
+                        <div class="modal-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px; color: #f0ad4e; margin-bottom: 15px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"/></svg>
+                            <h3>Konfirmasi Data</h3>
+                            <p>Apakah data yang Anda masukkan sudah benar dan lengkap?</p>
+                            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 15px;">
+                                <button id="confirm-no-btn" style="background-color: #dc3545;">Tidak, Kembali</button>
+                                <button id="confirm-yes-btn" style="background-color: #28a745;">Ya, Data Benar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="verification-modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center;">
+                        <div style="background: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 300px;">
+                            <svg id="checkmark-icon" style="width: 50px; height: 50px; color: green; margin-bottom: 15px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3>Data Telah Diverifikasi!</h3>
+                            <p>Proses pemesanan Anda telah selesai. Silakan hubungi layanan pelanggan untuk langkah selanjutnya.</p>
+                            <button onclick="document.getElementById('verification-modal').style.display='none'" style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Tutup</button>
+                        </div>
+                    </div>
+
+                    </div>
+            </section> 
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Jasa Layanan Pemesanan Makam.</p>
+            <p>Layanan Sistem dan Teknologi Informasi</p>
+        </div>
+    </footer>
+
+<script>
+    // --- Data Model ---
+    const locationData = {
+        'DKI_Jakarta': [ 
+            { value: 'JT', text: 'Jakarta Timur' },
+            { value: 'JB', text: 'Jakarta Barat' },
+            { value: 'JP', text: 'Jakarta Pusat' },
+            { value: 'JS', text: 'Jakarta Selatan' },
+            { value: 'JU', text: 'Jakarta Utara' }
+        ]
+    };
+    
+    const courseData = {
+        'JT': ['PondokRanggon', 'UtanKayu'], 
+        'JB': ['TegalAlur'], 
+        'JP': ['KaretBivak', 'Petamburan'], 
+        'JS': ['TanahKusir', 'MentengPulo', 'JerukPurut'], 
+        'JU': ['Semper', 'Rorotan'], 
+        '': [] 
+    };
+
+    let selectedTPU = null;
+
+    // --- Logic Functions ---
+
+    function updateSecondaryDropdown() {
+        const primarySelect = document.getElementById('primary-select');
+        const secondarySelect = document.getElementById('secondary-select');
+        const secondaryContainer = document.getElementById('secondary-dropdown-container');
+        
+        const selectedProvinceKey = primarySelect.value;
+        
+        secondarySelect.innerHTML = ''; 
+        secondarySelect.onchange = handleSelectionChange; 
+
+        if (selectedProvinceKey && locationData[selectedProvinceKey]) {
+            secondaryContainer.style.display = 'block';
+
+            const defaultOption = document.createElement('option');
+            defaultOption.value = '';
+            defaultOption.text = 'Pilih Kota';
+            secondarySelect.appendChild(defaultOption);
+
+            const options = locationData[selectedProvinceKey];
+            options.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.value;
+                option.text = item.text;
+                secondarySelect.appendChild(option);
+            });
+        } else {
+            secondaryContainer.style.display = 'none';
+        }
+        
+        handleSelectionChange(); 
+    }
+    
+    function handleSelectionChange() {
+        const secondarySelect = document.getElementById('secondary-select');
+        const continueButton = document.getElementById('continue-button');
+        const quoteTabLink = document.getElementById('quote-tab-link');
+        const errorMessage = document.getElementById('error-message');
+
+        const selectedCity = secondarySelect.value;
+        
+        if (selectedCity) {
+            continueButton.disabled = false;
+            quoteTabLink.classList.remove('disabled');
+            errorMessage.style.display = 'none';
+        } else {
+            continueButton.disabled = true;
+            quoteTabLink.classList.add('disabled');
+        }
+
+        updateCourseList();
+    }
+
+    function updateCourseList() {
+        const secondarySelect = document.getElementById('secondary-select');
+        const selectedCity = secondarySelect ? secondarySelect.value : ''; 
+        
+        const visibleCourses = courseData[selectedCity] || courseData['']; 
+        const allCourseItems = document.querySelectorAll('.course-item');
+        
+        allCourseItems.forEach(item => {
+            // Check if item is a TPU listing, not a form section
+            if (item.classList.contains('data-summary-block')) return;
+
+            const courseTitle = item.getAttribute('data-course-title');
+            if (visibleCourses.includes(courseTitle)) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        selectedTPU = null;
+        document.querySelectorAll('.course-item:not(.data-summary-block)').forEach(item => {
+            item.classList.remove('selected');
+        });
+        document.getElementById('tpu-continue-button').disabled = true;
+    }
+
+    function handleTPUSelection(tpuItem) {
+        const tpuContinueButton = document.getElementById('tpu-continue-button');
+        const tpuErrorMessage = document.getElementById('tpu-error-message');
+        
+        if (tpuItem.classList.contains('fully-occupied')) {
+            tpuContinueButton.disabled = true;
+            tpuErrorMessage.style.display = 'block';
+            tpuErrorMessage.textContent = 'TPU ini telah penuh dan tidak dapat dipilih.';
+            return; 
+        }
+
+        document.querySelectorAll('.course-item:not(.data-summary-block)').forEach(item => {
+            item.classList.remove('selected');
+        });
+
+        tpuItem.classList.add('selected');
+        selectedTPU = tpuItem.getAttribute('data-course-title');
+        tpuContinueButton.disabled = false;
+        tpuErrorMessage.style.display = 'none';
+        tpuErrorMessage.textContent = 'Harap pilih salah satu TPU untuk melanjutkan.'; // Reset message
+    }
+
+    function checkPerencanaanCompletion() {
+        const q1 = document.getElementById('perencanaan-q1').value;
+        const q2 = document.getElementById('perencanaan-q2').value;
+        const continueButton = document.getElementById('perencanaan-continue-button');
+        const dataTabLink = document.getElementById('data-tab-link');
+        const errorMsg = document.getElementById('perencanaan-error');
+
+        if (q1 && q2) {
+            continueButton.disabled = false;
+            dataTabLink.classList.remove('disabled');
+            errorMsg.style.display = 'none';
+        } else {
+            continueButton.disabled = true;
+            dataTabLink.classList.add('disabled');
+        }
+    }
+    
+    function checkDataFormCompletion() {
+        const form = document.getElementById('data-form');
+        const submitButton = document.getElementById('submit-button');
+        const errorMsg = document.getElementById('data-error');
+        
+        const requiredElements = Array.from(form.querySelectorAll('[required]'));
+        
+        const isValid = requiredElements.every(element => {
+            // Check for input/textarea/select elements that have a required attribute
+            if (element.type === 'radio') {
+                // For radio buttons, check if at least one in the group is checked
+                const groupName = element.name;
+                return document.querySelector(`input[name="${groupName}"]:checked`) !== null;
+            }
+            return element.value.trim() !== '';
+        });
+
+        if (isValid) {
+            submitButton.disabled = false;
+            errorMsg.style.display = 'none';
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
+    // --- DOM Content Loaded ---
+    document.addEventListener('DOMContentLoaded', function() {
+        updateSecondaryDropdown(); 
+
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        const secondarySelect = document.getElementById('secondary-select');
+        // Buttons and Links
+        const continueButton = document.getElementById('continue-button');
+        const tpuContinueButton = document.getElementById('tpu-continue-button'); 
+        const perencanaanContinueButton = document.getElementById('perencanaan-continue-button');
+        const submitButton = document.getElementById('submit-button');
+        const perencanaanTabLink = document.getElementById('perencanaan-tab-link');
+        // Modals
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const verificationModal = document.getElementById('verification-modal');
+        const confirmNoBtn = document.getElementById('confirm-no-btn');
+        const confirmYesBtn = document.getElementById('confirm-yes-btn');
+        // Forms & Inputs
+        const dataForm = document.getElementById('data-form');
+        const dataInputs = dataForm.querySelectorAll('input, select, textarea');
+
+        // UI Icons
+        const bellIcon = document.getElementById('bell-icon');
+        const notificationPopup = document.getElementById('notification-popup');
+
+
+        function switchTab(targetId) {
+            tabLinks.forEach(item => item.classList.remove('active'));
+            const targetLink = document.getElementById(`${targetId}-tab-link`);
+            if(targetLink) targetLink.classList.add('active');
+
+            tabPanes.forEach(pane => {
+                if (pane.id === targetId) {
+                    pane.classList.add('active');
+                } else {
+                    pane.classList.remove('active');
+                }
+            });
+             document.querySelector('.tabs-container').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Header Icon Listeners (Notification)
+        bellIcon.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            notificationPopup.classList.toggle('active');
+        });
+        document.body.addEventListener('click', () => {
+             notificationPopup.classList.remove('active'); 
+        });
+        notificationPopup.addEventListener('click', (e) => e.stopPropagation());
+
+        // TPU Selection Listener
+        document.getElementById('course-list').addEventListener('click', (e) => {
+            const target = e.target;
+            if (target.classList.contains('select-tpu-btn')) {
+                const listItem = target.closest('.course-item');
+                handleTPUSelection(listItem);
+            }
+        });
+
+        // Tab Click Listeners
+        tabLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const tabId = link.getAttribute('data-tab');
+
+                if (link.classList.contains('disabled')) {
+                    e.preventDefault();
+                    // Show error messages for disabled tabs
+                    if(tabId === 'quote') document.getElementById('error-message').style.display = 'block';
+                    if(tabId === 'perencanaan') document.getElementById('tpu-error-message').style.display = 'block';
+                    if(tabId === 'data') document.getElementById('perencanaan-error').style.display = 'block';
+                    return;
+                }
+                
+                e.preventDefault();
+                switchTab(tabId);
+            });
+        });
+
+        // --- Button Click Handlers ---
+
+        // PILIH LOKASI (Introduction) -> PILIH TPU (Quote)
+        continueButton.addEventListener('click', () => {
+            if (secondarySelect.value) { switchTab('quote'); }
+        });
+
+        // PILIH TPU (Quote) -> PERENCANAAN
+        tpuContinueButton.addEventListener('click', () => {
+            if (selectedTPU) {
+                switchTab('perencanaan');
+                perencanaanTabLink.classList.remove('disabled');
+            }
+        });
+
+        // PERENCANAAN -> DATA
+        perencanaanContinueButton.addEventListener('click', () => {
+            if (!perencanaanContinueButton.disabled) { switchTab('data'); }
+        });
+
+        // DATA: Form Input Listener
+        dataInputs.forEach(input => input.addEventListener('input', checkDataFormCompletion));
+        
+        // 1. Submit Data -> Show Confirmation Modal
+        dataForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!submitButton.disabled) {
+                confirmationModal.style.display = 'flex';
+            }
+        });
+
+        // 2. Confirmation Modal Actions
+        confirmNoBtn.addEventListener('click', () => {
+            confirmationModal.style.display = 'none';
+            switchTab('perencanaan'); // Redirect to Perencanaan Tab
+        });
+
+        confirmYesBtn.addEventListener('click', () => {
+            confirmationModal.style.display = 'none';
+            verificationModal.style.display = 'flex'; // Proceed to final success modal
+        });
+        
+        // Perencanaan Dropdown Listeners
+        document.getElementById('perencanaan-q1').addEventListener('change', checkPerencanaanCompletion);
+        document.getElementById('perencanaan-q2').addEventListener('change', checkPerencanaanCompletion);
+        
+        // Initial Checks
+        checkPerencanaanCompletion();
+        checkDataFormCompletion();
+    });
+</script>
+</body>
+</html>
+
